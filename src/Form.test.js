@@ -1,13 +1,15 @@
-import React from 'react';
-import 'jest-dom/extend-expect';
-import 'react-testing-library/cleanup-after-each';
-import { render } from 'react-testing-library';
-import { Input } from 'neutron-react-components';
+import React from "react";
+import "jest-dom/extend-expect";
 
-import Form from './Form';
+import { render, cleanup, waitForElement, fireEvent } from "./test-utils";
+import { Input } from "neutron-react-components";
 
-describe('<Form/> tests', () => {
-  it('should find by label', () => {
+import Form from "./Form";
+
+describe("<Form/> tests", () => {
+  afterEach(cleanup);
+
+  it("should find by label", () => {
     const {
       getByLabelText,
       queryByLabelText,
@@ -30,7 +32,7 @@ describe('<Form/> tests', () => {
     expect(invalid).not.toBeInTheDocument();
   });
 
-  it('should find by placeholder', () => {
+  it("should find by placeholder", () => {
     const {
       getByPlaceholderText,
       queryByPlaceholderText,
@@ -56,7 +58,7 @@ describe('<Form/> tests', () => {
     expect(invalid).not.toBeInTheDocument();
   });
 
-  it('should find by text', () => {
+  it("should find by text", () => {
     const {
       getByText,
       queryByText,
@@ -82,7 +84,7 @@ describe('<Form/> tests', () => {
     expect(invalid).not.toBeInTheDocument();
   });
 
-  it('should find by alt text', () => {
+  it("should find by alt text", () => {
     const {
       getByAltText,
       queryByAltText,
@@ -105,7 +107,7 @@ describe('<Form/> tests', () => {
     expect(arrImage.length).toBe(1);
   });
 
-  it('should find by title attribute', () => {
+  it("should find by title attribute", () => {
     const {
       getByTitle,
       queryByTitle,
@@ -125,7 +127,7 @@ describe('<Form/> tests', () => {
     expect(arrForm.length).toBe(1);
   });
 
-  it('should find by display value', () => {
+  it("should find by display value", () => {
     const {
       getByDisplayValue,
       queryByDisplayValue,
@@ -148,7 +150,7 @@ describe('<Form/> tests', () => {
     expect(invalid).not.toBeInTheDocument();
   });
 
-  it('should find by role attribute', () => {
+  it("should find by role attribute", () => {
     const {
       getByRole,
       queryByRole,
